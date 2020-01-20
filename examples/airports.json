@@ -1,0 +1,8 @@
+{
+    "string1": [
+	{ "KORD": {"offset": 0} },
+	{ "KBFI": {"offset": 1} },
+	{ "KRNT": {"offset": 2} },
+	{ "KPAE": {"offset": 3} }
+    ]
+}
