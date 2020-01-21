@@ -1,0 +1,29 @@
+{
+    "string1": [
+	{ "KPAE": {"offset": 0} },
+	{ "KSEA": {"offset": 1} },
+	{ "KSMP": {"offset": 2} },
+	{ "KELN": {"offset": 3} },
+	{ "KEAT": {"offset": 4} },
+	{ "KMWH": {"offset": 5} },
+	{ "KSFF": {"offset": 6} },
+	{ "KMSP": {"offset": 7} },
+	{ "KMSO": {"offset": 8} },
+	{ "KBTM": {"offset": 9} },
+	{ "KHLN": {"offset": 10} },
+	{ "KBZN": {"offset": 11} },
+	{ "KLVM": {"offset": 12} },
+	{ "KBIL": {"offset": 13} },
+	{ "KSHR": {"offset": 14} },
+	{ "KGCC": {"offset": 15} },
+	{ "KSPF": {"offset": 16} },
+	{ "KPHP": {"offset": 17} },
+	{ "9V9": {"offset": 18} },
+	{ "KSUX": {"offset": 19} },
+	{ "KDNS": {"offset": 20} },
+	{ "KDSM": {"offset": 21} },
+	{ "KOTM": {"offset": 22} },
+	{ "KBRL": {"offset": 23} },
+	{ "KMTO": {"offset": 24} }
+    ]
+}
