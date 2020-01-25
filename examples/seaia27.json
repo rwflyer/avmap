@@ -18,7 +18,7 @@
 	{ "KGCC": {"offset": 15} },
 	{ "KSPF": {"offset": 16} },
 	{ "KPHP": {"offset": 17} },
-	{ "9V9": {"offset": 18} },
+	{ "K9V9": {"offset": 18} },
 	{ "KSUX": {"offset": 19} },
 	{ "KDNS": {"offset": 20} },
 	{ "KDSM": {"offset": 21} },

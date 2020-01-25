@@ -34,20 +34,23 @@ color_by_category = {
 
 def setup_pixel_device():
     # hardware SPI connection on /dev/spidev0.0
-    pixels = Adafruit_WS2801.WS2801Pixels(PIXEL_COUNT, spi=SPI.SpiDev(SPI_PORT, SPI_PORT_DEVICE))
-    pixels.clear()
-    pixels.show()
+    p = Adafruit_WS2801.WS2801Pixels(PIXEL_COUNT, spi=SPI.SpiDev(SPI_PORT, SPI_PORT_DEVICE))
+    p.clear()
+    p.show()
 
-    [pixels.set_pixel(pixel, Adafruit_WS2801.RGB_to_color(0, 0, 0))
+    [p.set_pixel(pixel, Adafruit_WS2801.RGB_to_color(0, 0, 0))
          for pixel in range(0, PIXEL_COUNT)]
-    pixels.show()
+    p.show()
     
-    return pixels
+    return p
 
-pixels = 1  # None
+pixels = None
 
 def render_pixel(airport_offset, color):
     global pixels
+
+    print('render_pixel: {} {}'.format(airport_offset, color))
+
     pixels.set_pixel(airport_offset, Adafruit_WS2801.RGB_to_color(color[0], color[1], color[2]))
     pixels.show()
     
@@ -68,6 +71,5 @@ def render_airports(airport_list):
         else:
             color = colors['OFF']
 
-        # render_pixel(obs['offset'], color)
+        render_pixel(obs['offset'], color)
         print('{}: {} {}'.format(obs['icao_code'], metar.category(), color))
-
