@@ -1,8 +1,6 @@
 
 import airport_list
-import metar
-import render
-
+import leds
 import time
 
 # Loop fetching observations every N minutes, then sleep to wait for next interval.
@@ -12,11 +10,13 @@ import time
 DELAY_MINUTES = 60 * 15
 
 def mainloop():
-    airport_list.read_airports()
+    airports = airport_list.AirportList()
+    led_string = leds.LedString()
+    led_string.clear_to_black()
 
     while True:
-        airport_list.retrieve_metars()
-        render.render_airports(airport_list.metar_store)
+        airports.retrieve_metars()
+        airports.render_metars(led_string)
         time.sleep(DELAY_MINUTES)
 
 
