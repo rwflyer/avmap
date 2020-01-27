@@ -74,18 +74,19 @@ class AirportList(object):
             # baroque python3 way to get first key, which will be only key
             airport_code = next(iter(config_row))
             offset = config_row[airport_code]['offset']
-            metars.append({'icao_code': airport_code, 'metar': None, 'offset': offset})
+            metars.append({'icao_code': airport_code.upper(), 'metar': None, 'offset': offset})
         
         self.metar_store = metars
 
     def airport_codes_list(self):
         return [x['icao_code'] for x in self.metar_store]
-        
+ 
     def retrieve_metars(self):
         """
         Retrieves fresh metars for the airport list.  If a metar cannot be fetched,
         the entry is still present but the metar field is set to None.
         """
+
         raw_metars = metar.fetch_metars(self.airport_codes_list())
 
         self.fetched_at = datetime.utcnow()
@@ -109,5 +110,5 @@ class AirportList(object):
             else:
                 color = colors['OFF']
 
-        led_string.set_pixel(obs['offset'], color)
-        print('{}: {} {}'.format(obs['icao_code'], metar.category(), color))
+            led_string.set_pixel(obs['offset'], color)
+            print('{}: {} {}'.format(obs['icao_code'], metar.category(), color))
