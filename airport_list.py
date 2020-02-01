@@ -108,9 +108,11 @@ class AirportList(object):
         for obs in self.metar_store:
             metar = obs['metar']
             if metar is not None:
+                category = metar.category()
                 color = color_for_category(metar.category())
             else:
+                category = metar.INOP
                 color = colors['OFF']
 
             led_string.set_pixel(obs['offset'], color)
-            print('{}: {} {}'.format(obs['icao_code'], metar.category(), color))
+            print('{}: {} {}'.format(obs['icao_code'], category, color))
