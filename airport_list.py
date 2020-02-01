@@ -1,6 +1,6 @@
 import json
 import metar
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Abstraction for a list of airports and the current METARs for those airports.
 # The airports member contains a list of dictionaries, keyed as:
@@ -103,13 +103,14 @@ class AirportList(object):
         global colors
         global color_for_category
 
-        print("Update at {}".format(self.fetched_at))
+        lcltime = self.fetched_at.replace(tzinfo=timezone.utc).astimezone(tz=None)
+        print("Update at {}".format(lcltime))
         
         for obs in self.metar_store:
-            metar = obs['metar']
-            if metar is not None:
-                category = metar.category()
-                color = color_for_category(metar.category())
+            obs_metar = obs['metar']
+            if obs_metar is not None:
+                category = obs_metar.category()
+                color = color_for_category(category)
             else:
                 category = metar.INOP
                 color = colors['OFF']
