@@ -102,6 +102,8 @@ class AirportList(object):
     def render_metars(self, led_string):
         global colors
         global color_for_category
+
+        print("Update at {}".format(self.fetched_at))
         
         for obs in self.metar_store:
             metar = obs['metar']

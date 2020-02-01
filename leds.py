@@ -33,7 +33,7 @@ class LedString(object):
 
     def set_pixel(self, offset, rgb_color):
         if self.hardware_device:
-            print('render_pixel: {} {}'.format(offset, rgb_color))
+            # print('render_pixel: {} {}'.format(offset, rgb_color))
             
             self.hwdevice.set_pixel(offset, Adafruit_WS2801.RGB_to_color(rgb_color[0], rgb_color[1], rgb_color[2]))
             self.hwdevice.show()

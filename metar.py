@@ -69,11 +69,19 @@ def fetch_metars(airport_iaco_codes):
     metar_list = "%20".join(airport_iaco_codes)
     request_url = 'https://www.aviationweather.gov/metar/data?ids={}&format=raw&hours=0&taf=off&layout=off&date=0'.format(
         metar_list)
-    stream = urllib.request.urlopen(request_url, timeout=2)
-    data_found = False
-    stream_lines = stream.readlines()
-    stream.close()
 
+    stream = None
+    try:
+        stream = urllib.request.urlopen(request_url, timeout=2)
+        stream_lines = stream.readlines()
+        stream.close()
+    except Exception as exp:
+        if stream is not None:
+            stream.close()
+        print("Network error: {}".format(exp))
+        return metars
+
+    data_found = False
     for line in stream_lines:
         line_as_string = line.decode("utf-8")
         if '<!-- Data starts here -->' in line_as_string:
