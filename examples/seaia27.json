@@ -7,7 +7,7 @@
 	{ "KEAT": {"offset": 4} },
 	{ "KMWH": {"offset": 5} },
 	{ "KSFF": {"offset": 6} },
-	{ "KMSP": {"offset": 7} },
+	{ "KMLP": {"offset": 7} },
 	{ "KMSO": {"offset": 8} },
 	{ "KBTM": {"offset": 9} },
 	{ "KHLN": {"offset": 10} },
