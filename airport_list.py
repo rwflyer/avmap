@@ -92,12 +92,15 @@ class AirportList(object):
         self.fetched_at = datetime.utcnow()
     
         # Assign Metar objects for each retrieved observation, or None
+        valid_retrieve = False
         for airport_record in self.metar_store:
             code = airport_record['icao_code']
             if code in raw_metars:
                 airport_record['metar'] = metar.Metar(code, raw_metars[code], self.fetched_at)
+                valid_retrieve = True
             else:
                 airport_record['metar'] = None
+        return valid_retrieve
 
     def render_metars(self, led_string):
         global colors
